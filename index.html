@@ -41,7 +41,7 @@ body {
 				<!-- Search form -->
 				<form action="https://www.google.com/search" class="form-inline md-form form-sm mt-0" method="get" name="searchform">
 					<i style="filter: invert(100%)" class="fas fa-search" aria-hidden="true"></i>
-					<input style="color: white" autocomplete="on" autofocus class="form-control form-control-sm ml-3 w-75" name="q" type="text" placeholder="Search Google" aria-label="Search">
+					<input id="searchInput" style="color: white" autocomplete="on" autofocus class="form-control form-control-sm ml-3 w-75" name="q" type="text" placeholder="Search Google" aria-label="Search">
 				</form>
 			</div>
 		</div>
@@ -60,6 +60,27 @@ body {
 <script type="text/javascript" src="js/mdb.min.js"></script>
   
 <script>
+	$(document).ready(function () {
+                $('#searchInput').bind('change', function () {updateAutoComplete()});
+                function updateAutoComplete() {
+                    var input = document.getElementById('searchInput').value;
+			console.log(inpu);
+                    /*$.ajax({
+                        type:'GET',
+                        url: '/aeronaves/'.concat(matricula.concat('/precos_tempos')),
+                        data:{
+                            preco_hora: preco_hora,
+                        },
+                        success:function(data){
+                            data.unidade.forEach(function (unidade, i) {
+                                var tr = document.getElementById('tr-'.concat(i));
+                                tr.children[1].children[0].value = data.minutos[i];
+                                tr.children[2].children[0].value = data.preco[i];
+                            });
+                        }
+                    });*/
+                }
+            });
 	/*Set Weather*/
 	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>

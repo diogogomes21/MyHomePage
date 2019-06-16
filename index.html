@@ -64,21 +64,13 @@ body {
                 $('#searchInput').on('input', function () {updateAutoComplete()});
                 function updateAutoComplete() {
                     var input = document.getElementById('searchInput').value;
-			console.log(input);
-                    /*$.ajax({
+                    $.ajax({
                         type:'GET',
-                        url: '/aeronaves/'.concat(matricula.concat('/precos_tempos')),
-                        data:{
-                            preco_hora: preco_hora,
-                        },
+                        url: 'http://suggestqueries.google.com/complete/search?client=chrome&q='.concat(input),
                         success:function(data){
-                            data.unidade.forEach(function (unidade, i) {
-                                var tr = document.getElementById('tr-'.concat(i));
-                                tr.children[1].children[0].value = data.minutos[i];
-                                tr.children[2].children[0].value = data.preco[i];
-                            });
+                            console.log(data);
                         }
-                    });*/
+                    });
                 }
             });
 	/*Set Weather*/

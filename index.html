@@ -41,7 +41,7 @@ body {
 				<!-- Search form -->
 				<form action="https://www.google.com/search" class="form-inline md-form form-sm mt-0" method="get" name="searchform">
 					<i style="filter: invert(100%)" class="fas fa-search" aria-hidden="true"></i>
-					<input id="searchInput" style="color: white" autocomplete="on" autofocus class=" mdb-autocomplete form-control form-control-sm ml-3 w-75" name="q" type="text" placeholder="Search Google" aria-label="Search">
+					<input id="searchInput" style="color: white" autofocus class="mdb-autocomplete form-control form-control-sm ml-3 w-75" name="q" type="text" placeholder="Search Google" aria-label="Search">
 					<button class="mdb-autocomplete-clear">
     						<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
       							<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -67,6 +67,14 @@ body {
   
 <script>
 	function myAmazingFunction(data){
+			$('#searchInput').mdbAutocomplete({
+				data: data,
+				dataColor: 'white',
+				inputFocus: '2px solid green',
+				inputBlur: '1px solid #ced4da',
+				inputFocusShadow: '0 1px 0 0 #4285f4',
+				inputBlurShadow: ''
+			});
 			console.log(data);
 	}
 	$(document).ready(function () {

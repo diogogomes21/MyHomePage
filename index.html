@@ -67,7 +67,8 @@ body {
                     $.ajax({
                         type:'GET',
                         url: '//suggestqueries.google.com/complete/search?client=chrome&q='.concat(input),
-			dataType : 'json',
+			headers:
+			    Access-Control-Allow-Headers: *
                         success:function(data){
                             console.log(data);
                         }

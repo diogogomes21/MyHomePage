@@ -14,6 +14,8 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
+  <!-- AutoComplete CSS -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -39,16 +41,9 @@ body {
 		<div class="row">
 			<div class="col-md-5">
 				<!-- Search form -->
-				<form action="https://www.google.com/search" class="form-inline md-form form-sm mt-0" method="get" name="searchform">
-					<i style="filter: invert(100%)" class="fas fa-search" aria-hidden="true"></i>
-					<input type="text" id="searchInput" style="color: white" autofocus class="form-control mdb-autocomplete" name="q">
-					<button class="mdb-autocomplete-clear">
-    						<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
-      							<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-      							<path d="M0 0h24v24H0z" fill="none" />
-    						</svg>
-  					</button>
-					<label for="searchInput" class="active">Search Google</label>
+				<form action="https://www.google.com/search" class="form-inline md-form form-sm mt-0" method="get">
+					<i style="filter: invert(100%)" class="fas fa-search"></i>
+					<input id="searchInput" style="color: white" autocomplete="off" autofocus class="form-control form-control-sm ml-3 w-75" name="q" type="text" placeholder="Search Google">
 				</form>
 			</div>
 		</div>
@@ -65,27 +60,30 @@ body {
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="js/mdb.min.js"></script>
-  
+<!-- JQuery UI JavaScript -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 
 <script>
-	function myAmazingFunction(data){
-			$('#searchInput').mdb_autocomplete({
-				data: data,
-				dataColor: 'white',
-				inputFocus: '2px solid green',
-				inputBlur: '1px solid #ced4da',
-				inputFocusShadow: '0 1px 0 0 #4285f4',
-				inputBlurShadow: ''
-			});
-			//console.log(data);
+	function setAutocomplete(data){
+		var fill = [];
+		data[1].forEach(function(item){
+			item[0] = item[0].replace(/<b>/g,'');
+			item[0] = item[0].replace(/<\/b>/g,'');
+			fill.push(item[0]);
+		});
+		$('#searchInput').autocomplete({source: fill});
 	}
 	$(document).ready(function () {
-                $('#searchInput').on('input', function () {
-                    	var input = document.getElementById('searchInput').value;
+		var scriptAdded = false;
+        $('#searchInput').on('input', function () {
+			if(scriptAdded){$("script").last().remove()}
+            var input = document.getElementById('searchInput').value;
 			var myScript = document.createElement('script');
-			myScript.src = 'https://www.google.com/complete/search?client=hp&hl=en&sugexp=msedr&gs_rn=62&gs_ri=hp&cp=1&gs_id=9c&q='.concat(input).concat('&xhr=t&callback=hello&callback=myAmazingFunction');
-                    	$("body").append(myScript);
+			myScript.src = 'https://www.google.com/complete/search?client=hp&hl=en&sugexp=msedr&gs_rn=62&gs_ri=hp&cp=1&gs_id=9c&q='.concat(input).concat('&xhr=t&callback=hello&callback=setAutocomplete');
+            $("body").append(myScript);
+			scriptAdded = true;
 		});
-            });
+    });
 	/*Set Weather*/
 	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>

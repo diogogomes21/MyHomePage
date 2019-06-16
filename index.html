@@ -64,12 +64,13 @@ body {
 		function myAmazingFunction(data){
 			console.log(data);
 		}
+		var myScript = '';
                 $('#searchInput').on('input', function () {
-			var myScript = '';
                     	var input = document.getElementById('searchInput').value;
 			myScript = document.createElement('script');
 			myScript.src = 'https://www.google.com/complete/search?client=hp&hl=en&sugexp=msedr&gs_rn=62&gs_ri=hp&cp=1&gs_id=9c&q='.concat(input).concat('&xhr=t&callback=hello&callback=myAmazingFunction');
-                    /*$.ajax({
+                    	document.body.appendChild(myScript);
+			/*$.ajax({
                         type:'GET',
                         url: '//suggestqueries.google.com/complete/search?client=chrome&q='.concat(input),
 			dataType: 'json',

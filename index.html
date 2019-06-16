@@ -59,14 +59,14 @@ body {
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="js/mdb.min.js"></script>
   
-<script type="text/javascript">
+<script>
 	$(document).ready(function () {
                 $('#searchInput').on('input', function () {updateAutoComplete()});
                 function updateAutoComplete() {
                     var input = document.getElementById('searchInput').value;
                     $.ajax({
                         type:'GET',
-                        url: 'http://suggestqueries.google.com/complete/search?client=chrome&q='.concat(input),
+                        url: '//suggestqueries.google.com/complete/search?client=chrome&q='.concat(input),
 			    data: null,
                         success:function(data){
                             console.log(data);

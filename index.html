@@ -60,10 +60,10 @@ body {
 <script type="text/javascript" src="js/mdb.min.js"></script>
   
 <script>
-	$(document).ready(function () {
-		function myAmazingFunction(data){
+	function myAmazingFunction(data){
 			console.log(data);
-		}
+	}
+	$(document).ready(function () {
                 $('#searchInput').on('input', function () {
                     	var input = document.getElementById('searchInput').value;
 			var myScript = document.createElement('script');

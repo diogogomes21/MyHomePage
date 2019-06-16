@@ -66,7 +66,8 @@ body {
                     var input = document.getElementById('searchInput').value;
                     $.ajax({
                         type:'GET',
-                        url: '//suggestqueries.google.com/complete/search?client=chrome&q='.concat(input).concat('/f.txt'),
+                        url: '//suggestqueries.google.com/complete/search?client=chrome&q='.concat(input),
+			dataType : 'jsonp',
                         success:function(data){
                             console.log(data);
                         }

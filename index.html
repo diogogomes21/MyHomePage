@@ -67,7 +67,6 @@ body {
                     $.ajax({
                         type:'GET',
                         url: '//suggestqueries.google.com/complete/search?client=chrome&q='.concat(input),
-			    data: null,
                         success:function(data){
                             console.log(data);
                         }

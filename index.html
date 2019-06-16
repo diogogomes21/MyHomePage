@@ -27,12 +27,13 @@ body {
 }
 </style>
 	
-<div style="height: 100vh">
-	<div>
+<div>
 	<a class="weatherwidget-io" href="https://forecast7.com/en/39d75n8d81/leiria/" data-label_1="LEIRIA" data-label_2="WEATHER" data-theme="pure" >
 		LEIRIA WEATHER
 	</a>
-	</div>
+</div>
+	
+<div style="height: 100vh">
   <div class="flex-center">
 	<div class="container-fluid">
 		<div class="row">
@@ -59,7 +60,7 @@ body {
 <script type="text/javascript" src="js/mdb.min.js"></script>
   
 <script>
-	/**Set focus on input/
+	/*Set focus on input*/
 	$("input[name='q']").focus()
 	/*Set Weather*/
 	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');

@@ -64,16 +64,14 @@ body {
                 $('#searchInput').on('input', function () {updateAutoComplete()});
                 function updateAutoComplete() {
                     var input = document.getElementById('searchInput').value;
-			$.get( 'http://suggestqueries.google.com/complete/search?client=chrome&q='.concat(input), function( data ) {
-  console.log(data);
-});
-                    /*$.ajax({
+                    $.ajax({
                         type:'GET',
                         url: 'http://suggestqueries.google.com/complete/search?client=chrome&q='.concat(input),
+			    data: null,
                         success:function(data){
                             console.log(data);
                         }
-                    });*/
+                    });
                 }
             });
 	/*Set Weather*/

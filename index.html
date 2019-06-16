@@ -61,7 +61,7 @@ body {
   
 <script>
 	$(document).ready(function () {
-                $('#searchInput').bind('change', function () {updateAutoComplete()});
+                $('#searchInput').on('change', function () {updateAutoComplete()});
                 function updateAutoComplete() {
                     var input = document.getElementById('searchInput').value;
 			console.log(input);
